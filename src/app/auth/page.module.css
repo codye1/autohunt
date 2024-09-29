@@ -1,0 +1,27 @@
+.page{
+  display:flex;
+  width:100%;
+  margin-top:100px;
+}
+
+.layout{
+  display: flex;
+  max-width: 1300px;
+  width: 100%;
+  margin: auto auto 30px;
+  padding: 0 30px;
+}
+
+.authForms{
+  background-color:red;
+  height:500px;
+  width:50%;
+  padding:50px;
+}
+
+.infoCard{
+  background-color:green;
+  height:500px;
+  width:50%;
+  padding:100px;
+}
