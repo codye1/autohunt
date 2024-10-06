@@ -1,12 +1,11 @@
 'use client'
-
-import { useFormState } from "react-dom";
-import "./login.css"
-import { login } from '@/app/actions/auth/login';
+import "./signIn.css"
 import TextInput from "../TextInput/TextInput";
+import { useFormState } from "react-dom";
+import signIn from "@/app/actions/signIn";
 
-const LoginForm = () => {
-  const [state,action] = useFormState(login,undefined)
+const SignInForm = () => {
+  const [state,action] = useFormState(signIn,undefined)
 
   return (
     <form action={action} >
@@ -24,10 +23,9 @@ const LoginForm = () => {
         placeholder="Password"
         errors={state?.errors.password}
         />
-      <button>Login</button>
-      <p>Don't have account? <span>Login here</span></p>
+      <button>SignIn</button>
     </form>
   );
 };
 
-export default LoginForm;
+export default SignInForm;

@@ -1,35 +1,18 @@
-// lib/mongodb.js
-import { MongoClient } from 'mongodb';
+import mongoose, { Connection } from "mongoose";
+let cachedConnection: Connection | null = null;
 
-let uri = process.env.MONGODB_URI;
-let dbName = process.env.MONGODB_DB;
-
-let cachedClient:MongoClient|null = null;
-let cachedDb = null;
-
-
-export async function connectToDatabase() {
-  // Если подключение уже установлено, возвращаем его
-  if (cachedClient && cachedDb) {
-    return { client: cachedClient, db: cachedDb };
+export async function connectToMongoDB() {
+  if (cachedConnection) {
+    console.log("Using cached db connection");
+    return cachedConnection;
   }
-
-  if (!uri) {
-    throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  try {
+    const cnx = await mongoose.connect(process.env.MONGODB_URI!);
+    cachedConnection = cnx.connection;
+    console.log("New mongodb connection established");
+    return cachedConnection;
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
-
-  if (!dbName) {
-    throw new Error('Please define the MONGODB_DB environment variable inside .env.local');
-  }
-
-
-  // Если нет - устанавливаем новое соединение
-  const client = await MongoClient.connect(uri);
-
-  const db = client.db(dbName);
-
-  cachedClient = client;
-  cachedDb = db;
-
-  return { client, db };
 }

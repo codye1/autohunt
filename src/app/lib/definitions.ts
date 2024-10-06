@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const loginFormSchema = z.object({
+export const signInFormSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
   password: z
     .string()
@@ -44,7 +44,6 @@ export type FormState =
       message?: string
     }
   | undefined
-
 
 
   /*

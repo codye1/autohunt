@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import styles from "./page.module.css"
 import Header from "./ui/Header/Header";
+import { connectToMongoDB } from "./lib/mongodb";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -23,6 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  connectToMongoDB()
   return (
     <html lang="ua">
       <body className={`${geistSans.variable} ${geistMono.variable} ${styles.layout}`}>

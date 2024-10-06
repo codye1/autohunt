@@ -5,13 +5,13 @@ import Image from 'next/image';
 import facebook from "../public/facebook.png"
 import instagram from "../public/instagram.png"
 import youtube from "../public/youtube.png"
-import Signup from '../ui/SignupForm/SignupForm';
+import SignInForm from '../ui/SignInForm/SIgnInForm';
 
 const page = () => {
   return (
     <div className={styles.page}>
       <div className={styles.authForms}>
-        <Signup/>
+        <SignInForm/>
       </div>
       <div className={styles.container}>
         <div className={styles.infoCard}>
@@ -20,7 +20,7 @@ const page = () => {
               src={autoHuntLogo}
               alt='Auto Hunt logo'
             />
-            <h1>Login</h1>
+            <h1>SignIn</h1>
             <h2>Welcome to AutoHunt</h2>
             <div className={styles.icons}>
                 <Image

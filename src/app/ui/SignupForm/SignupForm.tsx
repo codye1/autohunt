@@ -1,9 +1,9 @@
 'use client'
 
 import { useFormState } from "react-dom";
-import "../LoginForm/login.css"
+import "../SignInForm/login.css"
 import TextInput from "../TextInput/TextInput";
-import { signup } from "@/app/actions/auth/signup";
+import signup from "@/app/actions/signin/signup";
 
 const Signup = () => {
   const [state,action] = useFormState(signup,undefined)
@@ -15,7 +15,7 @@ const Signup = () => {
             name="name"
             type="text"
             placeholder="Name"
-            errors={state?.errors.name}
+            errors={state?.errors?.name}
             />
         <TextInput
             title="Email"
@@ -39,7 +39,7 @@ const Signup = () => {
             errors={state?.errors.password}
             />
       <button>Signup</button>
-      <p>Don't have account? <span>Login here</span></p>
+      <p>Don&apos;t have account? <span>Login here</span></p>
     </form>
   );
 };
