@@ -1,25 +1,43 @@
-import { signInFormSchema, FormState } from '@/app/lib/definitions'
-import { signIn as  nextSignIn } from "next-auth/react";
+import { signInFormSchema, FormState } from '@/app/lib/definitions';
+import { signIn as nextSignIn } from 'next-auth/react';
 
 const signIn = async (state: FormState, formData: FormData) => {
-  // Validate form fields
   const validatedFields = signInFormSchema.safeParse({
     email: formData.get('email'),
     password: formData.get('password'),
-  })
-
-  // If any form fields are invalid, return early
+  });
   if (!validatedFields.success) {
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
-    }
+      errors: {
+        ...validatedFields.error.flatten().fieldErrors,
+        auth: undefined,
+      },
+    };
   }
 
-  // Call the provider or db to create a user...
+  try {
+    const result = await nextSignIn('credentials', {
+      ...validatedFields.data,
+      redirect: false,
+    });
 
-  await nextSignIn('credentials',{...validatedFields.data,callbackUrl:"/"})
+    if (result?.error) {
+      return {
+        errors: { auth: [result.error], email: undefined, password: undefined },
+      };
+    } else {
+      const urlParams = new URLSearchParams(window.location.search);
+      const callbackUrl = urlParams.get('callbackUrl');
 
+      window.location.href = callbackUrl || '/';
+    }
+  } catch (error) {
+    console.log(error);
 
-}
+    return {
+      errors: { auth: ['Error'], email: undefined, password: undefined },
+    };
+  }
+};
 
-export default signIn
+export default signIn;

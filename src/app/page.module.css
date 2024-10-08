@@ -1,8 +1,8 @@
-.page{
-  margin:auto;
+.page {
+  margin: auto;
 }
 
-.layout{
-  display:flex;
-  flex-direction:column;
+.layout {
+  display: flex;
+  flex-direction: column;
 }
