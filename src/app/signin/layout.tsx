@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'AutoHunt | Login',
 };
 
-const RootLayout = ({
+const Layout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -12,4 +12,4 @@ const RootLayout = ({
   return <div className={styles.layout}>{children}</div>;
 };
 
-export default RootLayout;
+export default Layout;

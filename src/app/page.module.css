@@ -1,8 +1,36 @@
 .page {
-  margin: auto;
+  display: flex;
+  max-width: 1440px;
+  width: 100%;
+  margin: auto auto;
+  padding: 0 112px;
+
+  justify-content: space-between;
 }
 
 .layout {
   display: flex;
   flex-direction: column;
+}
+
+.filters {
+  display: flex;
+  max-width: 391px;
+  width: 100%;
+}
+
+.cars {
+  display: flex;
+  flex-direction: column;
+  max-width: 761px;
+  width: 100%;
+}
+
+.switcherItem {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.switcherItem input {
+  display: none;
 }

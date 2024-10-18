@@ -1,0 +1,19 @@
+.page {
+  display: flex;
+  max-width: 1440px;
+  width: 100%;
+  margin: auto auto;
+  padding: 0 112px;
+
+  justify-content: space-between;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.slideCont {
+  width: 1440px;
+  height: 633px;
+}
