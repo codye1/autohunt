@@ -1,0 +1,70 @@
+.page {
+  display: flex;
+  width: 100%;
+  margin-top: 100px;
+
+  align-items: center;
+}
+
+.layout {
+  display: flex;
+  max-width: 1600px;
+  width: 100%;
+  margin: auto auto;
+  padding: 0 30px;
+}
+
+.authForms {
+  width: 50%;
+  padding: 25px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.infoCard {
+  display: inline-block;
+  background-color: #12232e;
+  padding: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 50%;
+  margin-left: 15px;
+  padding: 50px;
+}
+
+.rect {
+  border: #007cc7 4px solid;
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rect img {
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.rect h1 {
+  margin: 25px auto;
+  margin-top: 75px;
+  font-size: 32px;
+}
+
+.rect h2 {
+  margin: 0 auto;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.icons {
+  margin: 0 auto;
+}
+
+.icons img {
+  margin: 50px 10px;
+}

@@ -8,6 +8,7 @@
   ],
   "eslint.run": "onType", // Проверка во время ввода
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true // Автоматическое исправление на сохранении
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
   }
 }

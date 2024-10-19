@@ -1,0 +1,25 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+button {
+  margin-top: 20px;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #007cc7;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+p {
+  margin: 30px auto;
+}
+
+span {
+  font-weight: bold;
+  color: #4da8da;
+}
