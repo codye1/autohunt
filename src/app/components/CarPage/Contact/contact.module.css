@@ -1,0 +1,17 @@
+.communicationInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 24px;
+
+  margin-top: 32px;
+}
+
+.communicationInfo label {
+  margin: 0px;
+}
+
+.communicationInfo label input {
+  margin: 0px;
+  margin-top: 7px;
+}

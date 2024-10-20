@@ -1,0 +1,38 @@
+.dealerInfo {
+  margin-top: 16px;
+  background-color: #071620;
+  padding: 16px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.dealerInfo section {
+  margin-top: 0;
+
+  align-items: center;
+  display: flex;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+}
+
+.name div {
+  margin-left: 16px;
+}
+
+.name h2 {
+  font-size: 14px;
+}
+
+.phone h1 {
+  font-weight: SemiBold;
+  margin-left: 16px;
+}
+
+.email h1 {
+  font-weight: SemiBold;
+  margin-left: 16px;
+}

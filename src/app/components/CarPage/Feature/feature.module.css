@@ -1,0 +1,21 @@
+.featureItems {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.featureItem {
+  background-color: #12232e;
+  padding: 16px;
+  border-radius: 3px;
+  font-size: 18px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.featureItem img {
+  margin-right: 16px;
+}

@@ -1,7 +1,7 @@
 import { authConfig } from '@/app/configs/auth';
 import NextAuth from 'next-auth';
 
-const handler = NextAuth(authConfig);
+const handlers = NextAuth(authConfig);
 
-export { handler as GET, handler as POST };
+export { handlers as GET, handlers as POST };
 // eslint-disable-next-line prettier/prettier

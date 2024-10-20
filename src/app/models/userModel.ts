@@ -1,11 +1,11 @@
 import mongoose, { Document, Model } from 'mongoose';
+import { IUser } from '../lib/types';
 
-export interface IUser {
-  email: string;
+export interface UserData extends IUser {
   password: string;
 }
 
-export interface IUserDocument extends IUser, Document {
+export interface IUserDocument extends UserData, Document {
   createdAt: Date;
   updatedAt: Date;
 }
