@@ -1,0 +1,22 @@
+.sellCar {
+  display: flex;
+  max-width: 1440px;
+  width: 100%;
+  margin: auto auto;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 0 124px;
+}
+
+.sellCar form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 56px 0px;
+}
+
+@media (max-width: 912px) {
+  .sellCar {
+    padding: 0 30px;
+  }
+}

@@ -14,6 +14,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
@@ -39,4 +40,16 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.minw200 {
+  min-width: 200px;
+}
+
+.order2 {
+  order: 2;
+}
+
+.order1 {
+  order: 1;
 }

@@ -65,7 +65,8 @@
   cursor: pointer;
 }
 
-.carDetailsCar {
+.carDetailsCad {
   background-color: #071620;
   padding: 24px;
+  margin-top: 72px;
 }

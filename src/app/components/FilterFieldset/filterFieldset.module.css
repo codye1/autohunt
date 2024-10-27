@@ -1,0 +1,65 @@
+.filterFieldset {
+  border: none;
+  background-color: #152836;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.filterFieldset > span > h1 {
+  color: #d7d7d7;
+  font-size: 14px;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.filterFieldset > span {
+  cursor: pointer;
+  padding: 14px 16px;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterFieldset > ul {
+  list-style: none;
+  padding: 0 16px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.searchInput {
+  margin-top: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #d7d7d7;
+  border-radius: 3px;
+}
+
+.searchInput span input {
+  outline: none;
+}
+
+.filterFieldset > ul > li {
+  margin-bottom: 8px;
+}
+
+/* Custom scrollbar styles */
+.filterFieldset ul::-webkit-scrollbar {
+  width: 4px;
+}
+
+.filterFieldset ul::-webkit-scrollbar-thumb {
+  background-color: #989898;
+  border-radius: 2px;
+}
+
+.filterFieldset ul::-webkit-scrollbar-track {
+  background-color: #1d384c;
+  border-radius: 2px;
+}
+
+.filterFieldset ul::-webkit-scrollbar-button {
+  display: none;
+}

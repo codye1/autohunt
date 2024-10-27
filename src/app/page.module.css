@@ -2,7 +2,7 @@
   display: flex;
   max-width: 1440px;
   width: 100%;
-  margin: auto auto;
+  margin: 0 auto;
   padding: 0 112px;
 
   justify-content: space-between;
@@ -16,6 +16,7 @@
 .filters {
   display: flex;
   max-width: 391px;
+  margin-right: 24px;
   width: 100%;
 }
 
@@ -24,13 +25,4 @@
   flex-direction: column;
   max-width: 761px;
   width: 100%;
-}
-
-.switcherItem {
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.switcherItem input {
-  display: none;
 }

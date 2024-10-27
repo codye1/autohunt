@@ -1,0 +1,24 @@
+.filter {
+  padding: 16px;
+  background-color: #071620;
+  width: 100%;
+}
+
+.filter > h1 {
+  margin: 12px;
+  font-size: 20px;
+}
+
+.filter hr {
+  margin-bottom: 10px;
+}
+
+.filter label span input {
+  order: 2;
+}
+
+.filter form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 0px;
+}

@@ -1,0 +1,68 @@
+.labelRadioButton {
+  margin-right: 48px;
+  font-weight: 500;
+}
+
+.labelRadioButton input {
+  top: 0;
+  left: 0;
+  width: 100%;
+  cursor: inherit;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  z-index: 1;
+  position: absolute;
+}
+
+.labelRadioButton {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.radioButton {
+  flex: 0 0 auto;
+  overflow: visible;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+
+  margin-right: 8px;
+}
+
+.radioButton .inner,
+.radioButton .outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: white;
+}
+
+.radioButton .outer {
+  display: none;
+}
+
+.innerOuter {
+  display: flex;
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.innerOuter svg {
+  left: 0;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.radioButton input:checked + .innerOuter .outer {
+  display: block;
+}

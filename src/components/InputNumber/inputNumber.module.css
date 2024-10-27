@@ -1,0 +1,43 @@
+.inputNumberCont h1 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.inputNumber {
+  background-color: #152836;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.inputNumber button {
+  background-color: #004a77;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.inputNumber input {
+  border: none;
+  background-color: #152836;
+  max-width: 25px;
+
+  display: flex;
+  text-align: center;
+  padding: 0;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.inputNumber button span {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

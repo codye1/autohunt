@@ -14,13 +14,14 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.1.1",
-    "mongodb": "^6.9.0",
-    "mongoose": "^8.7.2",
+    "mongoose": "^8.7.3",
     "next": "14.2.15",
-    "next-auth": "^4.24.8",
+    "next-auth": "^4.24.10",
     "react": "^18",
     "react-dom": "^18",
+    "sharp": "^0.33.5",
     "swiper": "^11.1.14",
     "zod": "^3.23.8"
   },
@@ -28,6 +29,7 @@
     "@eslint/js": "^9.13.0",
     "@types/bcrypt": "^5.0.2",
     "@types/eslint__js": "^8.42.3",
+    "@types/next-auth": "^3.15.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -43,16 +45,5 @@
     "prettier": "^3.3.3",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.10.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
   }
 }

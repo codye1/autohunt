@@ -1,0 +1,66 @@
+.textInput {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 16px;
+  position: relative;
+}
+
+.textInput input {
+  background-color: #152836;
+  border: none;
+  padding: 15px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 16px;
+  flex: 1;
+  width: 100%;
+}
+
+.textInput span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #152836;
+}
+
+.textInput span i {
+  background-color: #004a77;
+  padding: 15px;
+  border-radius: 3px;
+}
+
+.imgIcon {
+  padding: 12px 0px 12px 16px;
+}
+
+.textInput ul li {
+  list-style: none;
+  color: #da4d4d;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.tips {
+  position: absolute;
+  background-color: #1d384c;
+  top: 100%;
+  padding: 16px;
+  width: 100%;
+  z-index: 999;
+  border-radius: 3px;
+  margin-top: 4px;
+}
+
+.tips > ul > li {
+  color: white;
+  margin: 5px 0;
+  font-weight: bold;
+  padding: 5px 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.tips > ul > li:hover {
+  background-color: #004a77;
+}

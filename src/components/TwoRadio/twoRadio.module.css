@@ -1,0 +1,11 @@
+.twoRadio {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.twoRadio h1 {
+  margin-bottom: 12px;
+  flex-basis: 100%;
+  font-size: 16px;
+}

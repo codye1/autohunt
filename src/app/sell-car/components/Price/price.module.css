@@ -1,0 +1,27 @@
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 27px 47px;
+
+  background-color: #071620;
+  padding: 24px;
+  width: 100%;
+  border: none;
+}
+
+.flexContainer > h1 {
+  font-size: 28px;
+  text-decoration: underline #d7d7d7;
+  box-shadow: none;
+  width: 100%;
+
+  text-underline-offset: 10px;
+}
+
+.flexContainer > label {
+  width: 100%;
+}
+
+.flexContainer > label > span input {
+  order: 2;
+}

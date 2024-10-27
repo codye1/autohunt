@@ -1,0 +1,62 @@
+.checkBox {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.checkBox {
+  cursor: pointer;
+}
+
+.checkBox > h1 {
+  font-size: 14px;
+}
+
+.checkBox span {
+  flex: 0 0 auto;
+  overflow: visible;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+
+  align-items: center;
+  margin-right: 8px;
+}
+
+.checkBox > span > input {
+  top: 0;
+  left: 0;
+  width: 100%;
+  cursor: inherit;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  z-index: 1;
+  position: absolute;
+}
+
+.innerOuter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.inner,
+.outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: white;
+}
+
+.outer {
+  display: none;
+}
+
+.checkBox > span > input:checked + .innerOuter .outer {
+  display: block;
+}

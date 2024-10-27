@@ -1,0 +1,87 @@
+.dropMenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.dropMenu h1 {
+  font-size: 16px;
+}
+
+.dropMenu button {
+  background-color: #152836;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.dropMenu menu {
+  position: absolute;
+  margin-top: 4px;
+  background-color: #1d384c;
+  top: 100%;
+  padding: 16px;
+  width: 100%;
+  z-index: 999;
+}
+
+.dropMenu input {
+  background-color: #152836;
+  border: 1px solid #d7d7d7;
+  border-radius: 3px;
+  padding: 16px 15px;
+  width: 100%;
+  font-size: 15px;
+  margin-bottom: 17px;
+}
+
+.dropMenu menu ul {
+  list-style: none;
+  max-height: 166px;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar styles */
+.dropMenu menu ul::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dropMenu menu ul::-webkit-scrollbar-thumb {
+  background-color: #989898;
+  border-radius: 2px;
+}
+
+.dropMenu menu ul::-webkit-scrollbar-track {
+  background-color: #1d384c;
+  border-radius: 2px;
+}
+
+.dropMenu menu ul::-webkit-scrollbar-button {
+  display: none;
+}
+
+.dropMenu menu ul li {
+  font-size: 16px;
+  font-weight: bold;
+  color: #d7d7d7;
+  margin-bottom: 10px;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+
+.dropMenu menu ul li:hover {
+  background-color: #004a77;
+}
+
+.isOpen {
+  transform: rotate(180deg);
+}
