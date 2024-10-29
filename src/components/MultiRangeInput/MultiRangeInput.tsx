@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef } from 'react';
-import styles from './MultiRangeInput.module.css';
+import styles from './multiRangeInput.module.css';
 
 interface IMultiRangeInput {
   minVal: number;
