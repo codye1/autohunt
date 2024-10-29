@@ -12,6 +12,8 @@ export const authConfig: NextAuthOptions = {
         password: { label: 'password', type: 'password', required: true },
       },
       async authorize(credentials) {
+        console.log(credentials);
+
         if (!credentials?.email || !credentials?.password) return null;
         await connectToMongoDB();
         const user = await User.findOne({ email: credentials.email });
@@ -25,10 +27,9 @@ export const authConfig: NextAuthOptions = {
           );
 
           if (isPasswordCorrect) {
-            const { password, ...userWithoutPassword } = user;
-            console.log(password);
+            console.log(user as NextUser);
 
-            return userWithoutPassword as NextUser;
+            return user as NextUser;
           } else {
             throw new Error('Invalid email or password.');
           }
@@ -43,9 +44,7 @@ export const authConfig: NextAuthOptions = {
         });
         console.log(newUser);
 
-        const { password, ...newUserWithoutPassword } = newUser;
-        console.log(password);
-        return newUserWithoutPassword as NextUser;
+        return newUser as NextUser;
       },
     }),
   ],

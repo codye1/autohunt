@@ -1,15 +1,14 @@
 'use client';
+import signIn from '@/actions/signIn';
 import { useFormState } from 'react-dom';
 import TextInput from '../TextInput/TextInput';
-import './signIn.css';
-
-import signIn from '@/actions/signIn';
+import styles from './signInForm.module.css';
 
 const SignInForm = () => {
   const [state, action] = useFormState(signIn, undefined);
 
   return (
-    <form action={action}>
+    <form action={action} className={styles.form}>
       <TextInput
         title="Email"
         name="email"
@@ -24,7 +23,8 @@ const SignInForm = () => {
         placeholder="Password"
         errors={state?.errors.password}
       />
-      <button>SignIn</button>
+      <p>{state?.errors.auth}</p>
+      <button type="submit">SignIn</button>
     </form>
   );
 };

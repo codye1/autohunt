@@ -18,7 +18,6 @@
   cursor: pointer;
   padding: 14px 16px;
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 }
@@ -26,8 +25,10 @@
 .filterFieldset > ul {
   list-style: none;
   padding: 0 16px;
+  z-index: 1;
   max-height: 180px;
   overflow-y: auto;
+  width: 100%;
 }
 
 .searchInput {

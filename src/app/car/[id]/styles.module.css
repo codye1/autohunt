@@ -34,6 +34,8 @@
 .carInfo {
   max-width: 664px;
   width: 100%;
+
+  margin-right: 24px;
 }
 
 .carDetails {
@@ -69,4 +71,24 @@
   background-color: #071620;
   padding: 24px;
   margin-top: 72px;
+}
+
+@media (max-width: 978px) {
+  .page {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 825px) {
+  .car {
+    flex-direction: column;
+  }
+
+  .carInfo {
+    max-width: none;
+  }
+
+  .carDetails {
+    max-width: none;
+  }
 }

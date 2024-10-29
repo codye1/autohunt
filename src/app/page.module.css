@@ -26,3 +26,20 @@
   max-width: 761px;
   width: 100%;
 }
+
+@media (max-width: 1150px) {
+  .page {
+    flex-direction: column;
+  }
+  .filters,
+  .cars {
+    margin-right: 0;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 0 24px;
+  }
+}

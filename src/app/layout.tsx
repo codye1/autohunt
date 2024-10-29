@@ -1,6 +1,9 @@
+import Providers from '@/components/providers';
 import type { Metadata } from 'next';
+import { getSession } from 'next-auth/react';
 import localFont from 'next/font/local';
 import { ReactNode } from 'react';
+import Header from './components/Header/Header';
 import './globals.css';
 import styles from './page.module.css';
 
@@ -20,17 +23,22 @@ export const metadata: Metadata = {
   description: 'car selling website',
 };
 
-const RootLayout = ({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) => {
+  const session = await getSession();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${styles.layout}`}
       >
-        {children}
+        <Providers session={session}>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );

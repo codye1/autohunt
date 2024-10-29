@@ -1,5 +1,6 @@
 import DropMenu from '@/components/DropMenu/DropMenu';
 import TextInput from '@/components/TextInput/TextInput';
+import { carDetails } from '@/lib/constants';
 import styles from './engineDetails.module.css';
 
 const EngineDetails = () => {
@@ -7,7 +8,7 @@ const EngineDetails = () => {
     <fieldset className={styles.flexContainer}>
       <h1>Engine Details</h1>
       <DropMenu
-        items={['Gasoline', 'Diesel', 'Electric', 'Hybrid']}
+        items={carDetails.fuelTypes}
         title="Fuel Type"
         name="fuelType"
         className={`${styles.flexItem} minw200`}
@@ -23,13 +24,13 @@ const EngineDetails = () => {
       <DropMenu
         title="Transmission"
         name="transmission"
-        items={['Automatic', 'Manual']}
+        items={carDetails.transmissions}
         className={`${styles.flexItem} minw200`}
       />
       <DropMenu
         title="Drive Train"
         name="driveTrain"
-        items={['FWD', 'RWD', 'AWD']}
+        items={carDetails.drivetrains}
         className={`${styles.flexItem} minw200`}
       />
       <TextInput

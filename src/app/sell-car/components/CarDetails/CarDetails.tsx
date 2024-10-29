@@ -1,14 +1,17 @@
 'use client';
 
 import InputNumber from '@/components/InputNumber/InputNumber';
+import { carDetails } from '@/lib/constants';
 import DropMenu from '@components/DropMenu/DropMenu';
 import TextArea from '@components/TextArea/TextArea';
 import TextInput from '@components/TextInput/TextInput';
 import { useState } from 'react';
 import TwoRadio from '../../../../components/TwoRadio/TwoRadio';
 import styles from './carDetails.module.css';
+
 const CarDetails = () => {
   const [number, setNumber] = useState(0);
+  const [selectedBrand, setSelectedBrand] = useState('');
 
   return (
     <fieldset className={styles.flexContainer}>
@@ -22,50 +25,20 @@ const CarDetails = () => {
           className={`${styles.firstItem}`}
         />
         <DropMenu
-          items={[
-            'Sedan',
-            'SUV',
-            'Coupe',
-            'Convertible',
-            'Hatchback',
-            'Wagon',
-            'Van',
-            'Truck',
-            'Crossover',
-            'Sports Car',
-          ]}
+          items={carDetails.bodyTypes}
           title="Body Type"
           name="bodyType"
           className={`${styles.flexItem} minw200`}
         />
         <DropMenu
-          items={[
-            'Audi',
-            'BMW',
-            'Chevrolet',
-            'Ford',
-            'Fiat',
-            'Audi',
-            'BMW',
-            'Chevrolet',
-            'Ford',
-            'Fiat',
-          ]}
+          items={carDetails.brands.map((brand) => brand.name)}
+          onSelected={(value) => setSelectedBrand(value)}
           title="Brand"
           name="brand"
           className={`${styles.flexItem}`}
         />
         <DropMenu
-          items={[
-            '2024',
-            '2023',
-            '2022',
-            '2021',
-            '2020',
-            '2019',
-            '2018',
-            '2017',
-          ]}
+          items={carDetails.years}
           title="Year"
           name="year"
           className={`${styles.flexItem} minw200`}
@@ -87,23 +60,16 @@ const CarDetails = () => {
           title="Condition"
         />
         <DropMenu
-          items={[
-            'Audi',
-            'BMW',
-            'Chevrolet',
-            'Ford',
-            'Fiat',
-            'Audi',
-            'BMW',
-            'Chevrolet',
-            'Ford',
-            'Fiat',
-          ]}
+          items={
+            carDetails.brands.find((brand) => brand.name === selectedBrand)
+              ?.models || []
+          }
+          disabled={selectedBrand === ''}
           title="Model"
           name="model"
         />
         <DropMenu
-          items={['Red', 'Blue', 'Black', 'White', 'Green', 'Red']}
+          items={carDetails.colors}
           title="Exterior Color"
           name="exteriorColor"
         />

@@ -1,5 +1,3 @@
-'use client';
-
 import Cars from './components/Cars/Cars';
 import Filter from './components/Filter/Filter';
 import styles from './page.module.css';

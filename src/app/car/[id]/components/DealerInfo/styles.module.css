@@ -5,6 +5,9 @@
 
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: 24px 0;
 }
 
 .dealerInfo section {
@@ -12,6 +15,12 @@
 
   align-items: center;
   display: flex;
+
+  min-width: 190px;
+}
+
+.dealerInfo hr {
+  margin: 0 5px;
 }
 
 .name {
@@ -27,6 +36,13 @@
   font-size: 14px;
 }
 
+.phone {
+  display: flex;
+  justify-content: center;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+}
+
 .phone h1 {
   font-weight: SemiBold;
   margin-left: 16px;
@@ -35,4 +51,27 @@
 .email h1 {
   font-weight: SemiBold;
   margin-left: 16px;
+}
+
+@media (max-width: 1267px) {
+  .email {
+    border-top: 1px solid white;
+    width: 100%;
+    justify-content: center;
+  }
+  .email h1 {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 1058px) {
+  .phone {
+    border: none;
+    border-top: 1px solid white;
+    width: 100%;
+  }
+
+  .phone h1 {
+    margin-top: 10px;
+  }
 }

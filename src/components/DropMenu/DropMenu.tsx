@@ -10,7 +10,9 @@ interface IDropMenu {
   defaultSelectedItem?: string;
   title: string;
   name: string;
+  onSelected?: (value: string) => void;
   className?: string;
+  disabled?: boolean;
 }
 
 const DropMenu = ({
@@ -19,6 +21,8 @@ const DropMenu = ({
   name,
   title,
   className,
+  disabled,
+  onSelected,
 }: IDropMenu) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(defaultSelectedItem || '');
@@ -46,6 +50,10 @@ const DropMenu = ({
     <label
       ref={dropdownRef}
       className={`${styles.dropMenu} ${className ? className : ''}`}
+      style={{
+        opacity: disabled ? 0.5 : 1,
+        pointerEvents: disabled ? 'none' : 'all',
+      }}
     >
       <h1>{title}</h1>
       <button
@@ -54,7 +62,7 @@ const DropMenu = ({
           setIsOpen((value) => !value);
         }}
       >
-        {selectedItem.length > 0 ? selectedItem : 'Select a model'}
+        {selectedItem.length > 0 ? selectedItem : 'Select a option'}
         <Image
           src={drop}
           alt="drop icon"
@@ -79,6 +87,9 @@ const DropMenu = ({
                   key={index}
                   onClick={() => {
                     setSelectedItem(item);
+                    if (onSelected) {
+                      onSelected(item);
+                    }
                   }}
                 >
                   {item}

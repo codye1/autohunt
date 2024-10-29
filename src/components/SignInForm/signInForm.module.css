@@ -1,10 +1,10 @@
-form {
+.form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-button {
+.form button {
   margin-top: 20px;
   padding: 15px;
   cursor: pointer;
@@ -15,11 +15,11 @@ button {
   font-size: 16px;
 }
 
-p {
-  margin: 30px auto;
+.form p {
+  color: #da4d4d;
 }
 
-span {
+.form span {
   font-weight: bold;
   color: #4da8da;
 }

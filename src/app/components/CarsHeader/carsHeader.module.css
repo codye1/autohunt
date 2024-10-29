@@ -1,0 +1,60 @@
+.header label span input {
+  order: 2;
+}
+
+.header > label {
+  margin-bottom: 16px;
+}
+
+.switcherItem {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.switcherItem input {
+  display: none;
+}
+
+.header > span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header > span > h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.header span fieldset {
+  max-width: 234px;
+  width: 100%;
+  position: relative;
+  background-color: #152836;
+}
+
+.header span fieldset ul {
+  position: absolute;
+
+  background-color: #152836;
+}
+
+.header > span > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 358px;
+  width: 100%;
+}
+
+@media (max-width: 570px) {
+  .header > span {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header > span > div {
+    justify-content: flex-start;
+  }
+}

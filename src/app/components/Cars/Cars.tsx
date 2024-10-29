@@ -2,11 +2,8 @@
 
 import CarsList from '@/components/CarsList/CarsList';
 import { Car, condition, drivetrain, fuelType } from '@/lib/types';
-import gridIcon from '@public/grid icon.svg';
-import listIcon from '@public/list icon.svg';
-import Image from 'next/image';
 import { useState } from 'react';
-import styles from './cars.module.css';
+import CarsHeader from '../CarsHeader/CarsHeader';
 
 const cars: Car[] = [
   {
@@ -142,38 +139,11 @@ const Cars = () => {
 
   return (
     <>
-      Cars list
-      <div className={styles.switcher}>
-        <label htmlFor="oneColumn" className={styles.switcherItem}>
-          <input
-            type="radio"
-            id="oneColumn"
-            name="columns"
-            value="oneColumn"
-            onChange={handleColumnChange}
-          />
-          <Image
-            src={listIcon}
-            alt="listIcon"
-            style={twoColumns ? { opacity: '100%' } : { opacity: '50%' }}
-          />
-        </label>
-
-        <label htmlFor="twoColumn" className={styles.switcherItem}>
-          <input
-            type="radio"
-            id="twoColumn"
-            name="columns"
-            value="twoColumn"
-            onChange={handleColumnChange}
-          />
-          <Image
-            src={gridIcon}
-            alt="gridIcon"
-            style={twoColumns ? { opacity: '50%' } : { opacity: '100%' }}
-          />
-        </label>
-      </div>
+      <CarsHeader
+        handleColumnChange={handleColumnChange}
+        twoColumns={twoColumns}
+        resultsLength={cars.length}
+      />
       <CarsList cars={cars} twoColumns={twoColumns} />
     </>
   );

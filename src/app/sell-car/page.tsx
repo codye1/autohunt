@@ -1,4 +1,4 @@
-'use client';
+import Button from '@/components/Button/Button';
 import CarDetails from './components/CarDetails/CarDetails';
 import Dimension from './components/Dimension/Dimension';
 import EngineDetails from './components/EngineDetails/EngineDetails';
@@ -19,6 +19,7 @@ const page = () => {
         <Location />
         <Price />
         <Images />
+        <Button title="Sell my car" type="submit" disabled />
       </form>
     </div>
   );

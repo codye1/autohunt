@@ -20,6 +20,7 @@ const signIn = async (state: FormState, formData: FormData) => {
       ...validatedFields.data,
       redirect: false,
     });
+    console.log(result);
 
     if (result?.error) {
       return {

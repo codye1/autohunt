@@ -3,20 +3,34 @@ import CheckBox from '@/components/CheckBox/CheckBox';
 import TextInput from '@/components/TextInput/TextInput';
 import drop from '@/public/drop.svg';
 import Image from 'next/image';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './filterFieldset.module.css';
 interface IFilterFieldset {
   title: string;
   name: string;
   items: string[];
+  disabled?: boolean;
+  onSelected?: Dispatch<SetStateAction<string[]>>;
 }
 
-const FilterFieldset = ({ title, items, name }: IFilterFieldset) => {
+const FilterFieldset = ({
+  title,
+  items,
+  name,
+  disabled,
+  onSelected,
+}: IFilterFieldset) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
   return (
-    <fieldset className={styles.filterFieldset}>
+    <fieldset
+      className={styles.filterFieldset}
+      style={{
+        opacity: disabled ? 0.5 : 1,
+        pointerEvents: disabled ? 'none' : 'all',
+      }}
+    >
       <span
         onClick={() => {
           setIsOpen((current) => !current);
@@ -33,24 +47,40 @@ const FilterFieldset = ({ title, items, name }: IFilterFieldset) => {
         <>
           <hr />
           <ul>
-            <TextInput
-              title=""
-              placeholder="Search here"
-              type="text"
-              name="searchItems"
-              trackValue={{
-                value: searchValue,
-                onChange: (event) => {
-                  setSearchValue(event.target.value);
-                },
-              }}
-              className={styles.searchInput}
-            />
+            {items.length > 4 && (
+              <TextInput
+                title=""
+                placeholder="Search here"
+                type="text"
+                name="searchItems"
+                trackValue={{
+                  value: searchValue,
+                  onChange: (event) => {
+                    setSearchValue(event.target.value);
+                  },
+                }}
+                className={styles.searchInput}
+              />
+            )}
             {items
               .filter((item) => item.includes(searchValue))
               .map((item, index) => (
                 <li key={index}>
-                  <CheckBox title={item} name={name} />
+                  <CheckBox
+                    title={item}
+                    name={name}
+                    onChange={(ev) => {
+                      if (onSelected) {
+                        if (ev.target.checked) {
+                          onSelected((current) => [...current, item]);
+                        } else {
+                          onSelected((current) =>
+                            current.filter((i) => i !== item),
+                          );
+                        }
+                      }
+                    }}
+                  />
                 </li>
               ))}
           </ul>

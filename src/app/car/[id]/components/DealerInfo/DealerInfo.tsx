@@ -26,7 +26,6 @@ const DealerInfo = ({ seller }: IDealerInfo) => {
             <h2>Dealer</h2>
           </div>
         </section>
-        <hr />
         <section className={styles.phone}>
           <Image
             src={phoneIcon}
@@ -37,7 +36,6 @@ const DealerInfo = ({ seller }: IDealerInfo) => {
           />
           <h1>{seller.phone}</h1>
         </section>
-        <hr />
         <section className={styles.email}>
           <Image
             src={emailIcon}
