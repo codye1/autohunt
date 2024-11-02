@@ -1,7 +1,8 @@
 'use client';
 
 import TextInput from '@/components/TextInput/TextInput';
-import getAdress from '@/lib/getAddress';
+import getAdress from '@/helpers/getAddress';
+import { SellCarFormState } from '@/lib/definitions';
 import { useState } from 'react';
 import styles from './location.module.css';
 interface Tip {
@@ -11,7 +12,7 @@ interface Tip {
 
 let timeout: NodeJS.Timeout;
 
-const Location = () => {
+const Location = ({ state }: { state: SellCarFormState }) => {
   const [searchAddress, setSearchAddress] = useState('');
   const [tips, setTips] = useState<Tip[]>([]);
   const [tipsOpen, setTipsOpen] = useState(false);
@@ -48,12 +49,15 @@ const Location = () => {
           },
           tipsOpen,
         }}
+        errors={state?.errors?.address}
       />
       <iframe
         width="100%"
         height="483px"
         src={`https://api.maptiler.com/maps/streets-v2/?key=XyT8E9T7XeDwpsq9fbbX#13.1/${tip.value.lat}/${tip.value.lon}`}
       ></iframe>
+      <input type="hidden" name="lat" value={tip.value.lat} />
+      <input type="hidden" name="lon" value={tip.value.lon} />
     </fieldset>
   );
 };

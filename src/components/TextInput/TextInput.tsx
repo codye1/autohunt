@@ -70,7 +70,7 @@ const TextInput = <T,>({
         </menu>
       )}
       {errors && (
-        <ul>
+        <ul className="errors">
           {errors.map((error) => (
             <li key={error}> {error}</li>
           ))}

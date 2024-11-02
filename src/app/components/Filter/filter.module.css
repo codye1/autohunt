@@ -2,6 +2,9 @@
   padding: 16px;
   background-color: #071620;
   width: 100%;
+  flex-direction: column;
+  position: sticky;
+  top: 24px;
 }
 
 .filter > h1 {

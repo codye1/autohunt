@@ -1,8 +1,11 @@
+import { Components, FilterItems } from './types';
+
 export const carDetails = {
   brands: [
     {
       name: 'Audi',
       models: [
+        'RS6',
         'A1',
         'A2',
         'A3',
@@ -18,6 +21,19 @@ export const carDetails = {
         'Q8',
         'TT',
         'R8',
+      ],
+    },
+    {
+      name: 'Skoda',
+      models: [
+        'Fabia',
+        'Octavia',
+        'Superb',
+        'Kodiaq',
+        'Karoq',
+        'Scala',
+        'Citigo',
+        'Enyaq',
       ],
     },
     {
@@ -319,32 +335,99 @@ export const carDetails = {
     'Electric',
     'Hybrid',
     'Hydrogen',
-    'CNG (Compressed Natural Gas)',
-    'LPG (Liquefied Petroleum Gas)',
     'Bioethanol',
     'Biodiesel',
     'Propane',
-    'E85 (Ethanol Blend)',
   ],
   transmissions: [
     'Manual',
     'Automatic',
-    'CVT (Continuously Variable Transmission)',
+    'CVT ',
     'Semi-Automatic',
     'Dual-Clutch',
     'Tiptronic',
     'Sequential',
-    'Direct-Shift Gearbox (DSG)',
+    'DSG',
     'Electric Drive',
-    'Automated Manual Transmission (AMT)',
+    'AMT',
   ],
   drivetrains: [
-    'Front-Wheel Drive (FWD)',
-    'Rear-Wheel Drive (RWD)',
-    'All-Wheel Drive (AWD)',
-    'Four-Wheel Drive (4WD)',
-    'Part-Time 4WD',
-    'Full-Time 4WD',
-    'Electric All-Wheel Drive (eAWD)',
+    'Front-Wheel ',
+    'Rear-Wheel ',
+    'All-Wheel ',
+    'Four-Wheel ',
+    'Part-Time ',
+    'Full-Time ',
   ],
 };
+
+export const filterItems: FilterItems[] = [
+  {
+    component: Components.FilterFieldset,
+    title: 'Year',
+    items: carDetails.years,
+    name: 'year',
+  },
+  {
+    component: Components.FilterFieldset,
+    title: 'Brand',
+    items: carDetails.brands.map((brand) => brand.name),
+    name: 'brand',
+    //onSelected: setSelectedBrands,
+  },
+  {
+    component: Components.FilterFieldset,
+    title: 'Model',
+    name: 'carModel',
+    /*
+    items: carDetails.brands
+      .filter((brand) => selectedBrands.includes(brand.name))
+      .flatMap((brand) => brand.models),
+    name: 'carModel',
+    disabled: !selectedBrands.length,
+    */
+  },
+  {
+    component: Components.FilterFieldset,
+    title: 'Body type',
+    items: carDetails.bodyTypes,
+    name: 'bodyType',
+  },
+  {
+    component: Components.FilterFieldset,
+    title: 'Transmission',
+    items: carDetails.transmissions,
+    name: 'transmission',
+  },
+  {
+    component: Components.FilterFieldset,
+    title: 'Fuel type',
+    items: carDetails.fuelTypes,
+    name: 'fuelType',
+  },
+  {
+    component: Components.FilterFieldset,
+    title: 'Drive train',
+    items: carDetails.drivetrains,
+    name: 'drivetrain',
+  },
+  {
+    component: Components.FilterFieldset,
+    title: 'Passenger capacity',
+    items: ['1', '2', '3', '4', '5', '6', '7', '8'],
+    name: 'passengerCapacity',
+  },
+  {
+    component: Components.FilterFieldset,
+    title: 'Exterior color',
+    items: carDetails.colors,
+    name: 'exteriorColor',
+  },
+  {
+    component: Components.MultiRange,
+    title: 'Price range',
+    name: 'priceRange',
+    min: 0,
+    max: 3000000,
+  },
+];

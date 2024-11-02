@@ -6,11 +6,12 @@ import styles from './multiRange.module.css';
 
 interface IMultiRange {
   title: string;
+  name: string;
   min: number;
   max: number;
 }
 
-const MultiRange = ({ title, min, max }: IMultiRange) => {
+const MultiRange = ({ title, min, max, name }: IMultiRange) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
 
@@ -28,6 +29,8 @@ const MultiRange = ({ title, min, max }: IMultiRange) => {
         setMaxVal={(maxVal) => setMaxVal(maxVal)}
         setMinVal={(minVal) => setMinVal(minVal)}
       />
+      <input type="hidden" name={name} value={minVal} />
+      <input type="hidden" name={name} value={maxVal} />
     </label>
   );
 };

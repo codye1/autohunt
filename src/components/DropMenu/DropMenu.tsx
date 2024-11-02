@@ -13,6 +13,7 @@ interface IDropMenu {
   onSelected?: (value: string) => void;
   className?: string;
   disabled?: boolean;
+  errors?: string[];
 }
 
 const DropMenu = ({
@@ -23,6 +24,7 @@ const DropMenu = ({
   className,
   disabled,
   onSelected,
+  errors,
 }: IDropMenu) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(defaultSelectedItem || '');
@@ -98,7 +100,9 @@ const DropMenu = ({
           </ul>
         </menu>
       )}
-
+      <ul className="errors">
+        {errors?.map((error, index) => <li key={index}>{error}</li>)}
+      </ul>
       <input type="hidden" name={name} value={selectedItem} />
     </label>
   );

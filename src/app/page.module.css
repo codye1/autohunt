@@ -14,10 +14,10 @@
 }
 
 .filters {
-  display: flex;
   max-width: 391px;
   margin-right: 24px;
   width: 100%;
+  position: relative;
 }
 
 .cars {

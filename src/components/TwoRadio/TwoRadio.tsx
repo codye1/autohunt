@@ -14,9 +14,16 @@ interface ITwoRadio {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
+  errros?: string[];
 }
 
-const TwoRadio = ({ name, title, firstRadio, secondRadio }: ITwoRadio) => {
+const TwoRadio = ({
+  name,
+  title,
+  firstRadio,
+  secondRadio,
+  errros,
+}: ITwoRadio) => {
   return (
     <section className={styles.twoRadio}>
       <h1>{title}</h1>
@@ -30,6 +37,9 @@ const TwoRadio = ({ name, title, firstRadio, secondRadio }: ITwoRadio) => {
         value={secondRadio.value}
         name={name}
       />
+      <ul className="errors">
+        {errros?.map((error, index) => <li key={index}>{error}</li>)}
+      </ul>
     </section>
   );
 };

@@ -4,6 +4,22 @@ import Credentials from 'next-auth/providers/credentials';
 import { connectToMongoDB } from '../lib/mongodb';
 import User from '../models/userModel';
 
+declare module 'next-auth' {
+  interface Session {
+    user: {
+      id: string; // Добавляем свойство id
+      email?: string | null;
+      name?: string | null;
+      image?: string | null;
+    };
+  }
+
+  interface User {
+    id: string; // Убедитесь, что тип User включает id
+    email: string;
+  }
+}
+
 export const authConfig: NextAuthOptions = {
   providers: [
     Credentials({
@@ -27,9 +43,14 @@ export const authConfig: NextAuthOptions = {
           );
 
           if (isPasswordCorrect) {
-            console.log(user as NextUser);
+            const authUser: NextUser = {
+              email: user.email,
+              id: String(user._id),
+            };
 
-            return user as NextUser;
+            console.log(authUser);
+
+            return authUser;
           } else {
             throw new Error('Invalid email or password.');
           }
@@ -42,14 +63,31 @@ export const authConfig: NextAuthOptions = {
           email: credentials.email,
           password: hashedPassword,
         });
-        console.log(newUser);
+        const authUser: NextUser = {
+          email: newUser.email,
+          id: String(newUser._id),
+        };
 
-        return newUser as NextUser;
+        return authUser as NextUser;
       },
     }),
   ],
   pages: {
     signIn: '/signin',
     error: '/signin',
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id ? String(user.id) : undefined;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token?.id) {
+        session.user.id = String(token.id);
+      }
+      return session;
+    },
   },
 };

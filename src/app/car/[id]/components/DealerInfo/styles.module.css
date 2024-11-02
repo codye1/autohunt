@@ -15,7 +15,7 @@
 
   align-items: center;
   display: flex;
-
+  max-width: 190px;
   min-width: 190px;
 }
 
@@ -48,12 +48,22 @@
   margin-left: 16px;
 }
 
+.email {
+  max-width: 460px;
+}
+
 .email h1 {
   font-weight: SemiBold;
   margin-left: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 1267px) {
+  .dealerInfo section {
+    max-width: none;
+  }
   .email {
     border-top: 1px solid white;
     width: 100%;

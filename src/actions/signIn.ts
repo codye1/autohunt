@@ -1,7 +1,7 @@
-import { FormState, signInFormSchema } from '@/lib/definitions';
+import { signInFormSchema, SignInFormState } from '@/lib/definitions';
 import { signIn as nextSignIn } from 'next-auth/react';
 
-const signIn = async (state: FormState, formData: FormData) => {
+const signIn = async (state: SignInFormState, formData: FormData) => {
   const validatedFields = signInFormSchema.safeParse({
     email: formData.get('email'),
     password: formData.get('password'),

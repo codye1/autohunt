@@ -1,9 +1,10 @@
 import DropMenu from '@/components/DropMenu/DropMenu';
 import TextInput from '@/components/TextInput/TextInput';
 import { carDetails } from '@/lib/constants';
+import { SellCarFormState } from '@/lib/definitions';
 import styles from './engineDetails.module.css';
 
-const EngineDetails = () => {
+const EngineDetails = ({ state }: { state: SellCarFormState }) => {
   return (
     <fieldset className={styles.flexContainer}>
       <h1>Engine Details</h1>
@@ -12,6 +13,7 @@ const EngineDetails = () => {
         title="Fuel Type"
         name="fuelType"
         className={`${styles.flexItem} minw200`}
+        errors={state?.errors?.fuelType}
       />
       <TextInput
         title="Mileage"
@@ -20,18 +22,21 @@ const EngineDetails = () => {
         placeholder=""
         textIcon="km"
         className={`${styles.flexItem}`}
+        errors={state?.errors?.mileage}
       />
       <DropMenu
         title="Transmission"
         name="transmission"
         items={carDetails.transmissions}
         className={`${styles.flexItem} minw200`}
+        errors={state?.errors?.transmission}
       />
       <DropMenu
         title="Drive Train"
-        name="driveTrain"
+        name="drivetrain"
         items={carDetails.drivetrains}
         className={`${styles.flexItem} minw200`}
+        errors={state?.errors?.drivetrain}
       />
       <TextInput
         title="Engine Capacity"
@@ -40,6 +45,7 @@ const EngineDetails = () => {
         placeholder=""
         textIcon="cc"
         className={`${styles.flexItem}`}
+        errors={state?.errors?.engineCapacity}
       />
       <TextInput
         title="Power"
@@ -48,6 +54,7 @@ const EngineDetails = () => {
         placeholder=""
         textIcon="hp"
         className={`${styles.flexItem}`}
+        errors={state?.errors?.power}
       />
     </fieldset>
   );

@@ -6,6 +6,8 @@
   height: 100%;
   padding: 15px;
   width: 100%;
+
+  cursor: pointer;
 }
 
 .imgCont {
@@ -64,6 +66,12 @@
   margin-right: 5px;
 }
 
+.infoCont > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .infoCont section {
   display: flex;
   vertical-align: middle;
@@ -100,6 +108,7 @@
   padding: 12px;
   flex-direction: column;
   height: 511px;
+  cursor: pointer;
 }
 
 .columnCard .imgCont {

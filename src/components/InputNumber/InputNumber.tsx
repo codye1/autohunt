@@ -12,6 +12,7 @@ interface IInputNumber {
   value: number;
   title: string;
   className?: string;
+  errors?: string[];
 }
 
 const InputNumber = ({
@@ -21,6 +22,7 @@ const InputNumber = ({
   value,
   className,
   title,
+  errors,
 }: IInputNumber) => {
   return (
     <label className={`${className} ${styles.inputNumberCont}`}>
@@ -71,6 +73,9 @@ const InputNumber = ({
           </span>
         </button>
       </span>
+      <ul className="errors">
+        {errors?.map((error, index) => <li key={index}>{error}</li>)}
+      </ul>
     </label>
   );
 };

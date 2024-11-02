@@ -1,7 +1,8 @@
 import TextInput from '@/components/TextInput/TextInput';
+import { SellCarFormState } from '@/lib/definitions';
 import styles from './dimension.module.css';
 
-const Dimension = () => {
+const Dimension = ({ state }: { state: SellCarFormState }) => {
   return (
     <fieldset className={styles.flexContainer}>
       <h1>Dimension</h1>
@@ -12,6 +13,7 @@ const Dimension = () => {
         placeholder=""
         textIcon="mm"
         className={`${styles.flexItem}`}
+        errors={state?.errors?.length}
       />
       <TextInput
         title="Width"
@@ -20,6 +22,7 @@ const Dimension = () => {
         placeholder=""
         textIcon="mm"
         className={`${styles.flexItem}`}
+        errors={state?.errors?.width}
       />
       <TextInput
         title="Height"
@@ -28,6 +31,7 @@ const Dimension = () => {
         placeholder=""
         textIcon="mm"
         className={`${styles.flexItem}`}
+        errors={state?.errors?.height}
       />
       <TextInput
         title="Cargo Volume"
@@ -36,6 +40,7 @@ const Dimension = () => {
         placeholder=""
         textIcon="L"
         className={`${styles.flexItem}`}
+        errors={state?.errors?.cargoVolume}
       />
     </fieldset>
   );

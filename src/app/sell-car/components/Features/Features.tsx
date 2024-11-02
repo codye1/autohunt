@@ -54,7 +54,7 @@ const Features = () => {
           ))}
         <CheckBox
           title={'Others'}
-          name={'features'}
+          name={'othersValue'}
           onChange={() => setOthers((value) => !value)}
           className={styles.flexItem}
         />
@@ -62,7 +62,7 @@ const Features = () => {
           <TextArea
             title=""
             name="others"
-            placeholder="Enter other features here"
+            placeholder="Enter other features here (through coma)"
           />
         )}
       </div>

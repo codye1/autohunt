@@ -1,14 +1,15 @@
 'use client';
 
 import Loader from '@/components/Loader/Loader';
-import { uploadImage } from '@/lib/uploadImg';
+import { uploadImage } from '@/helpers/uploadImg';
+import { SellCarFormState } from '@/lib/definitions';
 import closeIcon from '@public/close.svg';
 import uploadIcon from '@public/uploadIcon.svg';
 import Image from 'next/image';
 import { useState } from 'react';
 import styles from './images.module.css';
 
-const Images = () => {
+const Images = ({ state }: { state: SellCarFormState }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [imageLinks, setImageLinks] = useState<string[]>([]);
 
@@ -53,6 +54,13 @@ const Images = () => {
           onChange={handleFileChange}
         />
       </label>
+      {state?.errors?.images && (
+        <ul className="errors">
+          {state.errors.images.map((error, index) => (
+            <li key={index}>{error}</li>
+          ))}
+        </ul>
+      )}
       {imageLinks.map((link, index) => (
         <div
           key={index}

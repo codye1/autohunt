@@ -4,11 +4,7 @@ import phoneIcon from '@public/phone.svg';
 import Image from 'next/image';
 import styles from './styles.module.css';
 
-interface IDealerInfo {
-  seller: IUser;
-}
-
-const DealerInfo = ({ seller }: IDealerInfo) => {
+const DealerInfo = ({ seller }: { seller: IUser }) => {
   return (
     <section>
       <h1>Dealer Info</h1>
@@ -22,7 +18,7 @@ const DealerInfo = ({ seller }: IDealerInfo) => {
             alt="Car photo"
           />
           <div>
-            <h1>{seller.name}</h1>
+            <h1>{seller.name || 'not found'}</h1>
             <h2>Dealer</h2>
           </div>
         </section>
@@ -34,9 +30,9 @@ const DealerInfo = ({ seller }: IDealerInfo) => {
             style={{ objectFit: 'cover' }}
             alt="Car photo"
           />
-          <h1>{seller.phone}</h1>
+          <h1>{seller.phone || 'not found'}</h1>
         </section>
-        <section className={styles.email}>
+        <section className={styles.email} title={seller.email}>
           <Image
             src={emailIcon}
             width={24}

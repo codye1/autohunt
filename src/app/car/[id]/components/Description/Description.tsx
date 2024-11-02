@@ -9,6 +9,7 @@ interface IDescription {
 
 const Description = ({ description }: IDescription) => {
   const [scroped, setScroped] = useState(true);
+  console.log();
 
   return (
     <>
@@ -19,13 +20,15 @@ const Description = ({ description }: IDescription) => {
         <h1>Description</h1>
         {description}
       </section>
-      <button
-        onClick={() => {
-          setScroped((value) => !value);
-        }}
-      >
-        {scroped ? 'Детальніше' : 'Скрити'}
-      </button>
+      {description.length > 685 && (
+        <button
+          onClick={() => {
+            setScroped((value) => !value);
+          }}
+        >
+          {scroped ? 'Детальніше' : 'Скрити'}
+        </button>
+      )}
     </>
   );
 };

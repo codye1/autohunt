@@ -1,22 +1,34 @@
+'use client';
 import TextInput from '@/components/TextInput/TextInput';
 import gridIcon from '@public/grid icon.svg';
 import listIcon from '@public/list icon.svg';
 import search from '@public/search.svg';
 import Image from 'next/image';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import FilterFieldset from '../FilterFieldset/FilterFieldset';
 import styles from './carsHeader.module.css';
-
 interface ICarsHeader {
   twoColumns: boolean;
   handleColumnChange: () => void;
   resultsLength: number;
+  setParams: Dispatch<SetStateAction<URLSearchParams>>;
 }
 
 const CarsHeader = ({
   twoColumns,
   handleColumnChange,
   resultsLength,
+  setParams,
 }: ICarsHeader) => {
+  const [searchCar, setSearchCar] = useState<string>('');
+  const [sortBy, setSortBy] = useState<string[]>([]);
+  useEffect(() => {
+    setParams((current) => {
+      current.delete('sortBy');
+      sortBy.forEach((item) => current.append('sortBy', item.toLowerCase()));
+      return new URLSearchParams(current);
+    });
+  }, [sortBy, setParams]);
   return (
     <header className={styles.header}>
       <TextInput
@@ -25,6 +37,16 @@ const CarsHeader = ({
         name="searchCars"
         type="text"
         imgIcon={search}
+        trackValue={{
+          value: searchCar,
+          onChange: (e) => {
+            setSearchCar(e.target.value);
+            setParams((current) => {
+              current.set('title', e.target.value.toLowerCase());
+              return new URLSearchParams(current);
+            });
+          },
+        }}
       />
 
       <span>
@@ -32,7 +54,14 @@ const CarsHeader = ({
         <div>
           <FilterFieldset
             title="Sort by"
-            items={['Price', 'Rating', 'Year']}
+            items={[
+              'Price ascending',
+              'Price descending',
+              'Year ascending',
+              'Year descending',
+            ]}
+            selectedItems={sortBy.join(' ')}
+            onSelected={setSortBy}
             name="sortBy"
           />
           <div className={styles.switcher}>

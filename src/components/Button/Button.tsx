@@ -5,6 +5,7 @@ interface IButton {
   type: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   disabled?: boolean;
+  isLoading?: boolean;
 }
 
 const Button = ({ title, type, onClick, disabled }: IButton) => {

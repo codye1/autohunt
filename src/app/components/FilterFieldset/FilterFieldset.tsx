@@ -11,6 +11,7 @@ interface IFilterFieldset {
   items: string[];
   disabled?: boolean;
   onSelected?: Dispatch<SetStateAction<string[]>>;
+  selectedItems?: string;
 }
 
 const FilterFieldset = ({
@@ -19,6 +20,7 @@ const FilterFieldset = ({
   name,
   disabled,
   onSelected,
+  selectedItems,
 }: IFilterFieldset) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -69,6 +71,7 @@ const FilterFieldset = ({
                   <CheckBox
                     title={item}
                     name={name}
+                    checked={selectedItems?.includes(item)}
                     onChange={(ev) => {
                       if (onSelected) {
                         if (ev.target.checked) {

@@ -53,3 +53,12 @@ a {
 .order1 {
   order: 1;
 }
+
+.errors {
+  margin-top: 4px;
+  list-style: none;
+}
+
+.errors li {
+  color: #da4d4d;
+}

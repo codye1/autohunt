@@ -4,10 +4,11 @@ interface ICheckBox {
   title: string;
   name: string;
   className?: string;
+  checked?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CheckBox = ({ title, name, className, onChange }: ICheckBox) => {
+const CheckBox = ({ title, name, className, onChange, checked }: ICheckBox) => {
   return (
     <label className={`${styles.checkBox} ${className}`} htmlFor={title}>
       <span>
@@ -15,6 +16,7 @@ const CheckBox = ({ title, name, className, onChange }: ICheckBox) => {
           type="checkBox"
           name={name}
           id={title}
+          checked={checked}
           defaultValue={title}
           onChange={onChange}
         />

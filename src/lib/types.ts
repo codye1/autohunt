@@ -1,65 +1,37 @@
-enum condition {
-  new = 'new',
-  used = 'used',
-}
-
-enum drivetrain {
-  frontWheel = 'Front-wheel drive',
-  rearWheel = 'Rear-wheel drive',
-  allWheel = 'All-wheel drive',
-  fourWheel = 'Four-wheel drive',
-}
-
-enum fuelType {
-  diesel = 'Diesel',
-  electric = 'Electric',
-  gasoline = 'Gasoline',
-  hybrid = 'Hybrid',
-  gas = 'Natural gas',
-}
-
 export interface Car {
-  details: {
-    brand: string;
-    model: string;
-    condition: condition;
-    year: number;
-    bodyType: string;
-    seats: number;
-    exteriorColor: string;
-  };
-  engine: {
-    fuelType: fuelType;
-    mileage: number;
-    transmission: string;
-    drivetrain: drivetrain;
-    power: number;
-  };
-  batteryInfo?: {
-    capasity: number;
-    chargeSpeed: number;
-    chargePort: string;
-    chargeTime: number;
-  };
-  dimension: {
-    length: number;
-    width: number;
-    height: number;
-    cargoVolume: number;
-  };
+  title: string;
+  brand: string;
+  carModel: string;
+  condition: string;
+  year: number;
+  bodyType: string;
+  passengerCapacity: number;
+  exteriorColor: string;
+  fuelType: string;
+  mileage: number;
+  transmission: string;
+  drivetrain: string;
+  power: number;
+  engineCapacity: number;
+  chargeSpeed?: number;
+  chargePort?: string;
+  chargeTime?: number;
+  length: number;
+  width: number;
+  height: number;
+  cargoVolume: number;
   price: number;
   location: {
-    addres: string;
+    address: string;
     lat: string;
     lon: string;
   };
   rating: number;
   reviews: number;
-  img: string;
-  imgs: string[];
+  images: string[];
   description: string;
   features: string[];
-  seller: IUser;
+  seller: string;
 }
 
 export interface IUser {
@@ -68,6 +40,30 @@ export interface IUser {
   img: string;
   name: string;
 }
+export enum Components {
+  Condition = 'Condition',
+  FilterFieldset = 'FilterFieldset',
+  MultiRange = 'MultiRange',
+}
 
-export { condition, drivetrain, fuelType };
-// eslint-disable-next-line prettier/prettier
+export interface BaseItem {
+  component: Components;
+  title: string;
+}
+
+export interface FilterFieldsetItem extends BaseItem {
+  component: Components.FilterFieldset;
+  items: string[];
+  name: string;
+  onSelected?: (selected: string[]) => void;
+  disabled?: boolean;
+}
+
+export interface MultiRangeItem extends BaseItem {
+  component: Components.MultiRange;
+  name: string;
+  min: number;
+  max: number;
+}
+
+export type FilterItems = FilterFieldsetItem | BaseItem | MultiRangeItem;

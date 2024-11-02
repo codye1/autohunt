@@ -3,15 +3,25 @@
 import Button from '@/components/Button/Button';
 import MultiRange from '@/components/MultiRange/MultiRange';
 import TextInput from '@/components/TextInput/TextInput';
-import { carDetails } from '@/lib/constants';
+import convertFormDataToSearchParams from '@/helpers/convertFormDataToSearchParams';
+import { carDetails, filterItems } from '@/lib/constants';
+import { Components, FilterFieldsetItem, MultiRangeItem } from '@/lib/types';
 import search from '@public/search.svg';
-import { useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from 'react';
 import Condition from '../Condition/Condition';
 import FilterFieldset from '../FilterFieldset/FilterFieldset';
 import styles from './filter.module.css';
 
-const Filter = () => {
+const Filter = ({
+  params,
+  setParams,
+}: {
+  setParams: Dispatch<SetStateAction<URLSearchParams>>;
+  params: string;
+}) => {
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [searhItem, setSearchItem] = useState<string>('');
+  const formRef = useRef<HTMLFormElement>(null);
 
   return (
     <menu className={styles.filter}>
@@ -23,57 +33,92 @@ const Filter = () => {
         type="text"
         name="search"
         imgIcon={search}
+        trackValue={{
+          value: searhItem,
+          onChange: (e) => setSearchItem(e.target.value),
+        }}
       />
-      <form action="">
+      <form
+        action=""
+        onChange={(e: ChangeEvent<HTMLFormElement>) => {
+          setParams(convertFormDataToSearchParams(e));
+        }}
+        ref={formRef}
+      >
         <Condition />
-        <FilterFieldset title="Year" items={carDetails.years} name="year" />
-        <FilterFieldset
-          title="Brand"
-          items={carDetails.brands.map((brand) => brand.name)}
-          onSelected={setSelectedBrands}
-          name="brand"
-        />
-        <FilterFieldset
-          title="Model"
-          items={carDetails.brands
-            .filter((brand) => selectedBrands.includes(brand.name))
-            .flatMap((brand) => brand.models)}
-          name="model"
-          disabled={!selectedBrands.length}
-        />
+        {filterItems
+          .filter((item) =>
+            item.title.toLowerCase().includes(searhItem.toLowerCase()),
+          )
+          .map((item) => {
+            switch (item.component) {
+              case Components.FilterFieldset:
+                const fieldsetItem = item as FilterFieldsetItem;
+                // айтеми в carModel це моделі брендів які вибрані, якщо бренд не вибраний то carModel disabled
+                if (fieldsetItem.name === 'carModel') {
+                  console.log(fieldsetItem);
+                  return (
+                    <FilterFieldset
+                      key={fieldsetItem.title}
+                      title={fieldsetItem.title}
+                      name={fieldsetItem.name}
+                      selectedItems={params}
+                      disabled={true}
+                      items={carDetails.brands
+                        .filter((brand) => selectedBrands.includes(brand.name))
+                        .flatMap((brand) => brand.models)}
+                    />
+                  );
+                }
 
-        <FilterFieldset
-          title="Body type"
-          items={carDetails.bodyTypes}
-          name="bodyType"
+                if (fieldsetItem.name === 'brand') {
+                  return (
+                    <FilterFieldset
+                      key={fieldsetItem.title}
+                      title={fieldsetItem.title}
+                      name={fieldsetItem.name}
+                      selectedItems={params}
+                      items={fieldsetItem.items}
+                      onSelected={setSelectedBrands}
+                    />
+                  );
+                }
+
+                return (
+                  <FilterFieldset
+                    key={fieldsetItem.title}
+                    title={fieldsetItem.title}
+                    items={fieldsetItem.items}
+                    name={fieldsetItem.name}
+                    selectedItems={params}
+                    disabled={fieldsetItem.disabled}
+                  />
+                );
+              case 'MultiRange':
+                const multiRangeItem = item as MultiRangeItem;
+                return (
+                  <MultiRange
+                    key={multiRangeItem.title}
+                    title={multiRangeItem.title}
+                    name={multiRangeItem.name}
+                    min={multiRangeItem.min}
+                    max={multiRangeItem.max}
+                  />
+                );
+              default:
+                return null;
+            }
+          })}
+        <Button
+          title="Reset filters"
+          type="button"
+          onClick={() => {
+            if (formRef.current) {
+              formRef.current.reset();
+              setParams(new URLSearchParams());
+            }
+          }}
         />
-        <FilterFieldset
-          title="Transmission"
-          items={carDetails.transmissions}
-          name="transmission"
-        />
-        <FilterFieldset
-          title="Fuel type"
-          items={carDetails.fuelTypes}
-          name="fuelType"
-        />
-        <FilterFieldset
-          title="Drive train"
-          items={carDetails.drivetrains}
-          name="driveTrain"
-        />
-        <FilterFieldset
-          title="Passenger capacity"
-          items={['1', '2', '4', '5', '7', '8']}
-          name="passengerCapacity"
-        />
-        <FilterFieldset
-          title="Exterior color"
-          items={carDetails.colors}
-          name="exteriorColor"
-        />
-        <MultiRange title="Price range" min={0} max={1000000} />
-        <Button title="Reset filters" type="button" disabled />
       </form>
     </menu>
   );

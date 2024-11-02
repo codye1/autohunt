@@ -11,40 +11,44 @@ import styles from './cardCar.module.css';
 interface CardCar {
   column: boolean;
   car: Car;
+  onClick?: () => void;
 }
 
-const CardCar = ({ car, column }: CardCar) => {
+const CardCar = ({ car, column, onClick }: CardCar) => {
   return (
-    <section className={column ? styles.columnCard : styles.card}>
+    <section
+      onClick={onClick}
+      className={column ? styles.columnCard : styles.card}
+    >
       <div className={styles.imgCont}>
         <Image
-          src={car.img}
+          src={car.images[0]}
           fill
           style={{ objectFit: 'cover' }}
           alt="Car photo"
         />
       </div>
       <div className={styles.infoCont}>
-        <div className={styles.type}>{car.details.condition}</div>
-        <h1>{car.details.brand}</h1>
+        <div className={styles.type}>{car.condition}</div>
+        <h1>{car.title}</h1>
         <h2 className={styles.price}>${car.price}</h2>
-        <p>{car.location.addres}</p>
+        <p>{car.location.address}</p>
         <ul className={styles.info}>
           <li>
             <Image src={calendar} alt="calendar icon" />
-            {car.details.year}
+            {car.year}
           </li>
           <li>
-            <Image src={iwheel} alt="calendar icon" />
-            {car.engine.drivetrain}
+            <Image src={iwheel} alt="wheel icon" />
+            {car.drivetrain}
           </li>
           <li>
-            <Image src={fuel} alt="calendar icon" />
-            {car.engine.fuelType}
+            <Image src={fuel} alt="fuel icon" />
+            {car.fuelType}
           </li>
           <li>
-            <Image src={iseats} alt="calendar icon" />
-            {car.details.seats}
+            <Image src={iseats} alt="passenger icon" />
+            {car.passengerCapacity}
           </li>
         </ul>
         <hr />
