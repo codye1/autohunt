@@ -1,7 +1,39 @@
-import { Car as ICar } from '@/lib/types';
 import mongoose, { Document, Model } from 'mongoose';
 
-export interface ICarDocument extends ICar, Document {
+export interface ICarDocument extends Document {
+  title: string;
+  brand: string;
+  carModel: string;
+  condition: string;
+  year: number;
+  bodyType: string;
+  passengerCapacity: number;
+  exteriorColor: string;
+  fuelType: string;
+  mileage: number;
+  transmission: string;
+  drivetrain: string;
+  power: number;
+  engineCapacity: number;
+  chargeSpeed?: number;
+  chargePort?: string;
+  chargeTime?: number;
+  length: number;
+  width: number;
+  height: number;
+  cargoVolume: number;
+  price: number;
+  location: {
+    address: string;
+    lat: string;
+    lon: string;
+  };
+  rating: number;
+  reviews: number;
+  images: string[];
+  description: string;
+  features: string[];
+  seller: string;
   createdAt: Date;
   updatedAt: Date;
 }

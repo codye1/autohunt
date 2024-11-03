@@ -24,6 +24,7 @@ const FilterFieldset = ({
 }: IFilterFieldset) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  console.log(selectedItems);
 
   return (
     <fieldset
@@ -71,7 +72,7 @@ const FilterFieldset = ({
                   <CheckBox
                     title={item}
                     name={name}
-                    checked={selectedItems?.includes(item)}
+                    checked={selectedItems?.replace('+', ' ').includes(item)}
                     onChange={(ev) => {
                       if (onSelected) {
                         if (ev.target.checked) {

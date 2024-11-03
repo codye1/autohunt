@@ -1,10 +1,10 @@
-import { ICarDocument } from '@/models/carModel';
+import { Car } from '@/lib/types';
 import CardCar from '../CardCar/CardCar';
 import styles from './carsList.module.css';
 
 interface ICarsList {
   twoColumns: boolean;
-  cars: ICarDocument[];
+  cars: Car[];
 }
 
 const CarsList = ({ twoColumns, cars }: ICarsList) => {
