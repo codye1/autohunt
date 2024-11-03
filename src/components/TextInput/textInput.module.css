@@ -45,6 +45,11 @@
   margin-top: 4px;
 }
 
+.tips > ul {
+  list-style: none;
+  padding: 0;
+}
+
 .tips > ul > li {
   color: white;
   margin: 5px 0;

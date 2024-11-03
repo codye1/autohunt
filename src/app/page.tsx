@@ -13,7 +13,7 @@ export default function Home() {
       <div className={styles.filters}>
         <Filter params={params.toString()} setParams={setParams} />
       </div>
-      <div className={styles.cars}>
+      <div data-testid="cars" className={styles.cars}>
         <Cars params={params} setParams={setParams} />
       </div>
     </div>

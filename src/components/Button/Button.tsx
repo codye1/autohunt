@@ -18,6 +18,7 @@ const Button = ({ title, type, onClick, disabled }: IButton) => {
       type={type}
       onClick={onClick}
       className={styles.button}
+      disabled={disabled}
     >
       {title}
     </button>

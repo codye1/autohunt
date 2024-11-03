@@ -30,11 +30,11 @@ const CardCar = ({ car, column, onClick }: CardCar) => {
       </div>
       <div className={styles.infoCont}>
         <div className={styles.type}>{car.condition}</div>
-        <h1>{car.title}</h1>
+        <h1 data-testid="cardCarTitle">{car.title}</h1>
         <h2 className={styles.price}>${car.price}</h2>
         <p>{car.location.address}</p>
         <ul className={styles.info}>
-          <li>
+          <li data-testid="cardCarYear">
             <Image src={calendar} alt="calendar icon" />
             {car.year}
           </li>

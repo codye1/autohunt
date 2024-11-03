@@ -51,11 +51,12 @@ const sellCar = async (state: SellCarFormState, formData: FormData) => {
     };
   }
 
-  const car: IDataCar = {
+  const car: Car = {
     ...validatedFields.data,
     rating: 0,
     reviews: 0,
   };
+
   try {
     const response = await fetch('/api/cars', {
       method: 'POST',

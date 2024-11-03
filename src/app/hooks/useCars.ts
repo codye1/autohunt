@@ -1,4 +1,4 @@
-import { ICarDocument } from '@/models/carModel';
+import { Car } from '@/lib/types';
 import { useQuery } from '@tanstack/react-query';
 import { URLSearchParams } from 'url';
 
@@ -15,7 +15,7 @@ const fetchCars = async (params: URLSearchParams) => {
 };
 
 const useCars = (params: URLSearchParams) => {
-  return useQuery<ICarDocument[]>({
+  return useQuery<Car[]>({
     queryKey: ['cars'],
     queryFn: () => fetchCars(params),
   });

@@ -57,7 +57,7 @@ const MultiRangeInput = ({
         type="range"
         min={min}
         max={max}
-        step={100}
+        step={1}
         value={minVal}
         onChange={(event) => {
           const value = Math.min(Number(event.target.value), maxVal - 1);
@@ -66,12 +66,13 @@ const MultiRangeInput = ({
         }}
         className={`${styles.thumb} ${styles.thubLeft}`}
         style={{ zIndex: '5' }}
+        data-test-id="min-slider"
       />
       <input
         type="range"
         min={min}
         max={max}
-        step={100}
+        step={1}
         value={maxVal}
         onChange={(event) => {
           const value = Math.max(Number(event.target.value), minVal + 1);
@@ -80,6 +81,7 @@ const MultiRangeInput = ({
         }}
         className={`${styles.thumb} ${styles.thubRight}`}
         style={{ zIndex: '5' }}
+        data-test-id="max-slider"
       />
 
       <div className={styles.slider}>

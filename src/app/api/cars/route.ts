@@ -1,5 +1,5 @@
-import { IDataCar } from '@/actions/sellCar';
 import { connectToMongoDB } from '@/lib/mongodb';
+import { Car as ICar } from '@/lib/types';
 import Car from '@/models/carModel';
 import { SortOrder } from 'mongoose';
 import { NextRequest, NextResponse } from 'next/server';
@@ -19,7 +19,10 @@ interface CarFilter {
     $gte: number;
     $lte: number;
   };
-  title?: string;
+  title?: {
+    $regex: string;
+    $options: string;
+  };
 }
 
 export async function GET(request: NextRequest) {
@@ -54,7 +57,10 @@ export async function GET(request: NextRequest) {
     filter.passengerCapacity = passengerCapacity;
   if (exteriorColor.length > 0) filter.exteriorColor = exteriorColor;
   if (title) {
-    filter.title = title;
+    filter.title = {
+      $regex: title,
+      $options: 'i',
+    };
   }
 
   console.log(filter);
@@ -88,7 +94,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   await connectToMongoDB();
-  const car: IDataCar = await request.json();
+  const car: ICar = await request.json();
+  console.log('Car:', car);
+
   const newCar = await Car.create(car);
   return NextResponse.json({ carId: String(newCar._id) }, { status: 201 });
 }
